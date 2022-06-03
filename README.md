@@ -29,42 +29,44 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# Data formatting web app
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## The task
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Given are two files - both contain the same content - one is a CSV file the other is a PRN file,
+we want you write a simple web application that reads the CSV file and PRN file and, utilising
+a simple UI:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- formats and displays the raw data appropriately.
+- allows switching between an HTML table, and a formatted JSON display.
+- that compares the generated outputs and reports a failure message if the outputs are not identical. The HTML generated from each input file should be identical, and the JSON generated from each file should be identical.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The content (i.e. the data in the file, minus the formatting characters) of the input files
+differ, but you should produce identical output - irrespective of whether the input data format was CSV or PRN.
+Non ASCII characters should be handled and rendered correctly.
+No content should be lost in translation, but reformatting of content may be necessary
+and all output should be readable when presented in the UI.
 
-## Learn More
+## How to proceed
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Solutions that utilise web standards/apis (HTML, CSS, and JS) are preferred, but if you are not familiar
+with these then use your main (work) language.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Dependencies
 
-### Code Splitting
+Make sure you are ready to defend any and all dependencies you introduce into your solution.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Any open source libraries which make life easier for you are of course allowed.
+- Using frameworks like React/Preact, Vue, or Angular, Tailwind, Styled Components, StencilJs, Lit-Element, Bootstrap, etc. are an option but not required. Make sure they add value if you use them.
+- Server-side solutions, client-side solutions, or a combination of the two are acceptable.
 
-### Analyzing the Bundle Size
+## How to deliver
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Please include only the source code, any test code, and the build files. - no IDE files or build products.
+Please include a README.md with instructions on how to build and run the solution.
 
-### Making a Progressive Web App
+Please return the solution as a git repository. Make regular commits and pushes, so that we can see the evolution of the solution. Tar.gz or zip files are fine for delivery
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Deadline
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You have 48 hours to complete the task. We reckon a couple of evenings should be enough.
