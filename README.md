@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -66,7 +64,3 @@ Please include only the source code, any test code, and the build files. - no ID
 Please include a README.md with instructions on how to build and run the solution.
 
 Please return the solution as a git repository. Make regular commits and pushes, so that we can see the evolution of the solution. Tar.gz or zip files are fine for delivery
-
-## Deadline
-
-You have 48 hours to complete the task. We reckon a couple of evenings should be enough.
