@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper h1 {
   text-align: center;
 }
 
@@ -16,4 +16,31 @@
   width: 100%;
   min-height: 50vh;
   padding: 1rem;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: lightgray;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
