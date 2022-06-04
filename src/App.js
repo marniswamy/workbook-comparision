@@ -4,7 +4,8 @@ import Papa from "papaparse";
 import { TableContant } from "./components/TableContent";
 
 export const App = () => {
-  const [csvData, setcsvData] = useState([]);
+  const [csvData, setCsvData] = useState([]);
+  const [prnData, setPrnData] = useState([]);
   const [headerRow, setHeaderRow] = useState([]);
   const [dataRows, setDataRows] = useState([]);
 
@@ -15,7 +16,7 @@ export const App = () => {
       complete: function (results) {
         const headerData = [];
         const tableData = [];
-        setcsvData(results.data);
+        setCsvData(results.data);
         console.table(results.data);
         results.data.map((item) => {
           headerData.push(Object.keys(item));
@@ -29,13 +30,23 @@ export const App = () => {
   };
 
   const handlePnrSelect = (event) => {
+    /*   Papa.parse(event.target.files[0], {
+      header: true,
+      skipEmptyLines: true,
+      complete: function (results) {
+        console.log("--------.data ", results.data);
+        setPrnData(results.data);
+        console.table(results.data);
+      },
+    }); */
+
     let reader = new FileReader();
     reader.readAsText(event.target.files[0]);
-
     reader.onload = function () {
-      console.table(reader.result);
-      console.log(reader.result.split(" "));
+      console.log(reader.result);
+      setPrnData(reader.result);
     };
+
     reader.onerror = function () {
       console.log(reader.error);
     };
@@ -72,11 +83,7 @@ export const App = () => {
               onChange={handlePnrSelect}
             />
           </div>
-          <TableContant
-            headerRow={headerRow}
-            csvData={csvData}
-            dataRows={dataRows}
-          />
+          <code>{prnData}</code>
         </div>
       </div>
     </div>
