@@ -1,15 +1,14 @@
 import "./App.css";
 import React, { useState } from "react";
 import Papa from "papaparse";
-import ReactJson from "react-json-view";
+import { TableContant } from "./components/TableContent";
 
 export const App = () => {
   const [csvData, setcsvData] = useState([]);
   const [headerRow, setHeaderRow] = useState([]);
   const [dataRows, setDataRows] = useState([]);
-  const [showRawData, setShowRawData] = useState(false);
 
-  const handleOnChange = (event) => {
+  const handleCsvSelect = (event) => {
     Papa.parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
@@ -17,6 +16,7 @@ export const App = () => {
         const headerData = [];
         const tableData = [];
         setcsvData(results.data);
+        console.table(results.data);
         results.data.map((item) => {
           headerData.push(Object.keys(item));
           return tableData.push(Object.values(item));
@@ -26,6 +26,19 @@ export const App = () => {
         setDataRows(tableData);
       },
     });
+  };
+
+  const handlePnrSelect = (event) => {
+    let reader = new FileReader();
+    reader.readAsText(event.target.files[0]);
+
+    reader.onload = function () {
+      console.table(reader.result);
+      console.log(reader.result.split(" "));
+    };
+    reader.onerror = function () {
+      console.log(reader.error);
+    };
   };
 
   return (
@@ -40,45 +53,31 @@ export const App = () => {
               name="file"
               accept=".csv"
               placeholder="Please choose CSV file"
-              onChange={handleOnChange}
+              onChange={handleCsvSelect}
             />
-            <button
-              className="show-button"
-              onClick={() => {
-                setShowRawData(!showRawData);
-              }}
-            >
-              {showRawData ? "Show table format" : "Show Raw Data"}
-            </button>
           </div>
-          <div>
-            {!showRawData && !!headerRow.length && (
-              <table>
-                <thead>
-                  <tr>
-                    {headerRow.map((item, index) => (
-                      <th key={index}>{item}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataRows.map((value, index) => {
-                    return (
-                      <tr key={index}>
-                        {value.map((val, i) => {
-                          return <td key={i}>{val}</td>;
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
-
-            {showRawData && <ReactJson src={csvData} />}
-          </div>
+          <TableContant
+            headerRow={headerRow}
+            csvData={csvData}
+            dataRows={dataRows}
+          />
         </div>
-        <div>Section 2</div>
+        <div>
+          <div className="action-row">
+            <span>Select prn file: </span>
+            <input
+              type="file"
+              name="file"
+              accept=".prn"
+              onChange={handlePnrSelect}
+            />
+          </div>
+          <TableContant
+            headerRow={headerRow}
+            csvData={csvData}
+            dataRows={dataRows}
+          />
+        </div>
       </div>
     </div>
   );

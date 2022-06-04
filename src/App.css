@@ -23,6 +23,7 @@
 table {
   border-collapse: collapse;
   margin: 1rem 0;
+  width: 100%;
 }
 
 td,
@@ -43,4 +44,13 @@ tr:nth-child(even) {
   background: lightgray;
   padding: 0.5rem;
   margin-bottom: 1rem;
+}
+
+.action-row span {
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+section {
+  text-align: right;
 }
