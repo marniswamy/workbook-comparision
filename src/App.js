@@ -8,27 +8,32 @@ export const App = () => {
   const [csvData, setCsvData] = useState([]);
   const [prnData, setPrnData] = useState([]);
 
-  const handleCsvSelect = (event) => {
-    Papa.parse(event.target.files[0], {
-      header: true,
-      skipEmptyLines: true,
-      complete: function(results) {
-        setCsvData(results.data);
-      },
-    });
-  };
+  const handleFileSelect = ({ target }) => {
+    const file = target.files[0];
+    const fileType = target.files[0].name.split(".").pop();
 
-  const handlePnrSelect = (event) => {
-    let reader = new FileReader();
-    reader.readAsText(event.target.files[0]);
-    reader.onload = function() {
-      const dataInJSON = dataToJson.txt({ data: reader.result }).toJson();
-      setPrnData(dataInJSON);
-    };
+    if (fileType.includes("csv")) {
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+          setCsvData(results.data);
+        },
+      });
+    }
 
-    reader.onerror = function() {
-      console.log(reader.error);
-    };
+    if (fileType.includes("prn")) {
+      let reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function() {
+        const dataInJSON = dataToJson.txt({ data: reader.result }).toJson();
+        setPrnData(dataInJSON);
+      };
+
+      reader.onerror = function() {
+        console.error(reader.error);
+      };
+    }
   };
 
   return (
@@ -38,32 +43,20 @@ export const App = () => {
         <button>Compare both files</button>
         <p>Both the files are same</p>
       </div>
-
       <div className="app-container">
         <div>
-          <div className="action-row">
-            <span>Select csv file: </span>
-            <input
-              type="file"
-              name="file"
-              accept=".csv"
-              placeholder="Please choose CSV file"
-              onChange={handleCsvSelect}
-            />
-          </div>
-          <TableContant arrayData={csvData} />
+          <TableContant
+            arrayData={csvData}
+            type="csv"
+            handleSelect={handleFileSelect}
+          />
         </div>
         <div>
-          <div className="action-row">
-            <span>Select prn file: </span>
-            <input
-              type="file"
-              name="file"
-              accept=".prn"
-              onChange={handlePnrSelect}
-            />
-          </div>
-          <TableContant arrayData={prnData} />
+          <TableContant
+            arrayData={prnData}
+            type="prn"
+            handleSelect={handleFileSelect}
+          />
         </div>
       </div>
     </div>
