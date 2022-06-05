@@ -7,7 +7,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: calc(100vw - 2rem);
-  margin: 4vh auto;
+  margin: 2vh auto;
   gap: 1rem;
 }
 
@@ -57,4 +57,40 @@ section {
 
 .compare-text {
   text-align: center;
+}
+
+.compare-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 0.8rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 2px;
+}
+
+.compare-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message {
+  background: #e88e8e;
+  color: #141619;
+  padding: 0.5rem 1rem;
+  width: -moz-fit-content;
+  width: 25vw;
+  margin: 1vh auto;
+  border-radius: 4px;
+  text-align: left;
+  position: relative;
+}
+
+.message span {
+  position: absolute;
+  right: 0.5rem;
+  color: #141619;
+  cursor: pointer;
 }
