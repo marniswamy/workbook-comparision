@@ -7,28 +7,13 @@ import dataToJson from "data-to-json";
 export const App = () => {
   const [csvData, setCsvData] = useState([]);
   const [prnData, setPrnData] = useState([]);
-  const [headerRow, setHeaderRow] = useState([]);
-  const [dataRows, setDataRows] = useState([]);
-
-  const [headerRowPrn, setHeaderRowPrn] = useState([]);
-  const [dataRowsPrn, setDataRowsPrn] = useState([]);
 
   const handleCsvSelect = (event) => {
     Papa.parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
       complete: function(results) {
-        const headerData = [];
-        const tableData = [];
         setCsvData(results.data);
-        console.table(results.data);
-        results.data.map((item) => {
-          headerData.push(Object.keys(item));
-          return tableData.push(Object.values(item));
-        });
-
-        setHeaderRow(headerData[0]);
-        setDataRows(tableData);
       },
     });
   };
@@ -38,19 +23,7 @@ export const App = () => {
     reader.readAsText(event.target.files[0]);
     reader.onload = function() {
       const dataInJSON = dataToJson.txt({ data: reader.result }).toJson();
-      console.table(dataInJSON);
       setPrnData(dataInJSON);
-
-      const headerData = [];
-      const tableData = [];
-
-      dataInJSON.map((item) => {
-        headerData.push(Object.keys(item));
-        return tableData.push(Object.values(item));
-      });
-
-      setHeaderRowPrn(headerData[0]);
-      setDataRowsPrn(tableData);
     };
 
     reader.onerror = function() {
@@ -78,11 +51,7 @@ export const App = () => {
               onChange={handleCsvSelect}
             />
           </div>
-          <TableContant
-            headerRow={headerRow}
-            csvData={csvData}
-            dataRows={dataRows}
-          />
+          <TableContant arrayData={csvData} />
         </div>
         <div>
           <div className="action-row">
@@ -94,11 +63,7 @@ export const App = () => {
               onChange={handlePnrSelect}
             />
           </div>
-          <TableContant
-            headerRow={headerRowPrn}
-            csvData={prnData}
-            dataRows={dataRowsPrn}
-          />
+          <TableContant arrayData={prnData} />
         </div>
       </div>
     </div>

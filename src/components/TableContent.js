@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ReactJson from "react-json-view";
 
-export const TableContant = ({ headerRow, dataRows, csvData }) => {
+export const TableContant = ({ arrayData = [] }) => {
   const [showRawData, setShowRawData] = useState(false);
+  const header = arrayData.map((item) => Object.keys(item));
+  const bodyData = arrayData.map((item) => Object.values(item));
 
   return (
     <div>
@@ -12,22 +14,22 @@ export const TableContant = ({ headerRow, dataRows, csvData }) => {
           onClick={() => {
             setShowRawData(!showRawData);
           }}
-          disabled={!headerRow.length}
+          disabled={!header.length}
         >
           {showRawData ? "Show table format" : "Show Raw Data"}
         </button>
       </section>
-      {!showRawData && !!headerRow.length && (
+      {!showRawData && !!header.length && (
         <table>
           <thead>
             <tr>
-              {headerRow.map((item, index) => (
+              {header[0].map((item, index) => (
                 <th key={index}>{item}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {dataRows.map((value, index) => {
+            {bodyData.map((value, index) => {
               return (
                 <tr key={index}>
                   {value.map((val, i) => {
@@ -39,7 +41,7 @@ export const TableContant = ({ headerRow, dataRows, csvData }) => {
           </tbody>
         </table>
       )}
-      {showRawData && <ReactJson src={csvData} />}
+      {showRawData && <ReactJson src={arrayData} />}
     </div>
   );
 };
