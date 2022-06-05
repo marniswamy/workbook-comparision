@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import ReactJson from "react-json-view";
+import { JSONView } from "../JSONView/JSONView";
 
+/**
+ * TableContant component to renders the uploaded file data along
+ * with the action
+ * @param {*} param0
+ * @returns
+ */
 export const TableContant = ({ arrayData = [], handleSelect, type }) => {
   const [showRawData, setShowRawData] = useState(false);
   const header = arrayData.map((item) => Object.keys(item));
@@ -51,7 +57,7 @@ export const TableContant = ({ arrayData = [], handleSelect, type }) => {
             </tbody>
           </table>
         )}
-        {showRawData && <ReactJson src={arrayData} />}
+        <JSONView showRawData={showRawData} arrayData={arrayData} />
       </div>
     </React.Fragment>
   );

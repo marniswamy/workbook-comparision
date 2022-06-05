@@ -94,3 +94,9 @@ section {
   color: #141619;
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  .app-container {
+    flex-direction: column;
+  }
+}
