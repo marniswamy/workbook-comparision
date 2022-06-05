@@ -28,6 +28,7 @@ export const UploadSection = ({ arrayData = [], handleSelect, type }) => {
         <section>
           <button
             className="show-button"
+            data-test="toggle-view"
             onClick={() => {
               setShowRawData(!showRawData);
             }}

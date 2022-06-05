@@ -8,12 +8,8 @@ import React from "react";
  */
 export const TableView = ({ showRawData, header = [], bodyData = [] }) => {
   // If user enables JSOV view the it wont be displayed
-  if (showRawData) {
+  if (showRawData || !header.length) {
     return null;
-  }
-
-  if (!header.length) {
-    return <p>Please wait...</p>;
   }
 
   return (

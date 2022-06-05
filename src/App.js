@@ -71,6 +71,7 @@ export const App = () => {
       <h1>File comparison and formatting</h1>
       <div className="compare-text">
         <button
+          data-test="compare-files"
           className="compare-button"
           disabled={!csvData.length || !prnData.length}
           onClick={handleCompare}
