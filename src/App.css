@@ -54,3 +54,7 @@ tr:nth-child(even) {
 section {
   text-align: right;
 }
+
+.compare-text {
+  text-align: center;
+}

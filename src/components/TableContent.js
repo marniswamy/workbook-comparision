@@ -39,7 +39,6 @@ export const TableContant = ({ headerRow, dataRows, csvData }) => {
           </tbody>
         </table>
       )}
-
       {showRawData && <ReactJson src={csvData} />}
     </div>
   );
