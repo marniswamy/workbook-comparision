@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Papa from "papaparse";
-import { TableContant } from "./components/TableContent/TableContent";
+import { UploadSection } from "./components/UploadSection/UploadSection";
 import dataToJson from "data-to-json";
 
 export const App = () => {
@@ -85,14 +85,14 @@ export const App = () => {
       </div>
       <div className="app-container">
         <div>
-          <TableContant
+          <UploadSection
             arrayData={csvData}
             type="csv"
             handleSelect={handleFileSelect}
           />
         </div>
         <div>
-          <TableContant
+          <UploadSection
             arrayData={prnData}
             type="prn"
             handleSelect={handleFileSelect}
