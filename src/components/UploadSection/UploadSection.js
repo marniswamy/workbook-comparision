@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { JSONView } from "../JSONView/JSONView";
+import { TableView } from "../TableView/TableView";
 
 /**
  * UploadSection component to renders the uploaded file data along
@@ -35,28 +36,11 @@ export const UploadSection = ({ arrayData = [], handleSelect, type }) => {
             {showRawData ? "Show table format" : "Show Raw Data"}
           </button>
         </section>
-        {!showRawData && !!header.length && (
-          <table>
-            <thead>
-              <tr>
-                {header[0].map((item, index) => (
-                  <th key={index}>{item}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {bodyData.map((value, index) => {
-                return (
-                  <tr key={index}>
-                    {value.map((item, i) => {
-                      return <td key={i}>{item}</td>;
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+        <TableView
+          showRawData={showRawData}
+          header={header}
+          bodyData={bodyData}
+        />
         <JSONView showRawData={showRawData} arrayData={arrayData} />
       </div>
     </React.Fragment>
