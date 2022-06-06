@@ -1,8 +1,16 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import { App } from "./App";
 
-test("renders File comparison and formatting text", () => {
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<App />, div);
+});
+
+it("renders welcome message", () => {
   render(<App />);
-  const linkElement = screen.getByText(/File comparison and formatting/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(
+    screen.getByText("File comparison and formatting")
+  ).toBeInTheDocument();
 });
