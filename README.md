@@ -81,6 +81,10 @@ Please return the solution as a git repository. Make regular commits and pushes,
 - For comparing the files i made the basic comparision and displaying message
 - In case npm install has any errors please use this flag `npm i --legacy-peer-deps`. This is due to one of the parser i am using.
 
-#### [Note] I am happry to discuss more about my approch and implementation in the call.
+## Preview
+
+<img src="preview.png" alt="preview" width="1024"/>
+
+#### I am happry to discuss more about my approch and implementation in the call.
 
 # Thank you!
