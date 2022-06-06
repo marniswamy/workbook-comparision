@@ -4,6 +4,10 @@
 
 In the project directory, you can run:
 
+### `npm install`
+
+### [In case any error please run npm install --legacy-peer-deps]
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -64,3 +68,19 @@ Please include only the source code, any test code, and the build files. - no ID
 Please include a README.md with instructions on how to build and run the solution.
 
 Please return the solution as a git repository. Make regular commits and pushes, so that we can see the evolution of the solution. Tar.gz or zip files are fine for delivery
+
+## Assumptions, implementation and delivered task
+
+- I choose react library for this application.
+- Created SPA with create react app library with regular css template
+- Copied the csv and prn files into assets folder
+- Added Upload section component where file selection input, table view and json view added along with toggle button
+- I have parsed the uploaded csv with the `papaparse` npm package and displayed the the table view
+- For the JSON view i took the npm package `react-json-view` for rendering the json text in the page
+- I could not success in parcing the prn file, how ever i managed with work around, as I dont find any parcing library for prn files
+- For comparing the files i made the basic comparision and displaying message
+- In case npm install has any errors please use this flag `npm i --legacy-peer-deps`. This is due to one of the parser i am using.
+
+#### [Note] I am happry to discuss more about my approch and implementation in the call.
+
+# Thank you!
